@@ -1,4 +1,4 @@
-require_relative '../linked_list'
+require_relative '../lib/linked_list'
 
 describe LinkedList do
   List = LinkedList.new
