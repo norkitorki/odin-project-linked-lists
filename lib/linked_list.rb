@@ -2,7 +2,7 @@
 
 # singly linked List class
 class LinkedList
-  attr_accessor :head, :tail, :size
+  attr_reader :head, :tail, :size
 
   # linked List node class
   class Node
@@ -61,7 +61,7 @@ class LinkedList
       predecessor.next = Node.new(value, predecessor.next)
     end
     update_tail
-    update_size(1)
+    @size += 1
   end
 
   def remove_at(index)
@@ -74,7 +74,7 @@ class LinkedList
       predecessor.next = predecessor.next.next
     end
     update_tail(size - 2)
-    update_size(-1)
+    @size -= 1
   end
 
   private
@@ -91,10 +91,6 @@ class LinkedList
   end
 
   def update_tail(index = size)
-    self.tail = tail&.next || at(index)
-  end
-
-  def update_size(num)
-    (size + num).negative? ? 0 : self.size += num
+    @tail = tail&.next || at(index)
   end
 end
